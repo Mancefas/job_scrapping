@@ -2,10 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 
 
-import requests
-from bs4 import BeautifulSoup
-
-
 def scrape_jobs_cvBankas():
     URL = "https://www.cvbankas.lt/?padalinys%5B%5D=76&keyw="
     page = requests.get(URL)
