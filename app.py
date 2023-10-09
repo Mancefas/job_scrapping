@@ -1,5 +1,5 @@
 from flask import Flask, request
-from cvBankas import scrape_jobs_cvBankas
+from cv_bankas import scrape_jobs_cvBankas
 from cvLT import scrape_jobs_cvlt
 from cvMarket import scrape_jobs_cvmarket
 from cvOnline import scrape_jobs_cvonline
