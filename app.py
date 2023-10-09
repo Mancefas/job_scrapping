@@ -1,10 +1,12 @@
 from flask import Flask, request
+from flask_cors import CORS
 from cv_bankas import scrape_jobs_cvBankas
 from cvLT import scrape_jobs_cvlt
 from cvMarket import scrape_jobs_cvmarket
 from cvOnline import scrape_jobs_cvonline
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/")
