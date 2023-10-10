@@ -24,6 +24,9 @@ def scrape_jobs_cvonline():
         company = job.find("div", class_="vacancy-item__column").text if job.find(
             "div", class_="vacancy-item__column") is not None else None
 
+        company_img = websiteName + job.find("img")["src"] if job.find(
+            "img") is not None else None
+
         city = job.find("div", class_="vacancy-item__locations").text if job.find(
             "div", class_="vacancy-item__locations") is not None else None
 
@@ -37,6 +40,7 @@ def scrape_jobs_cvonline():
             "link": link,
             "title": title,
             "company": company,
+            "company_img": company_img,
             "city": city,
             "time_added": time_added,
             "salary": salary

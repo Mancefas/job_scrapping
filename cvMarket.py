@@ -22,6 +22,9 @@ def scrape_jobs_cvmarket():
         company = job.find("span", class_="job-company").text if job.find(
             "span", class_="job-company") is not None else None
 
+        company_img = job.find("img")["src"] if job.find(
+            "img") is not None else None
+
         city = job.find("span", class_="location").find("div", class_=False).text if job.find(
             "span", class_="location") is not None else None
 
@@ -36,6 +39,7 @@ def scrape_jobs_cvmarket():
             "link": link,
             "title": title,
             "company": company,
+            "company_img": company_img,
             "city": city,
             "time_added": time_added,
             "salary": salary

@@ -28,6 +28,9 @@ def scrape_jobs_cvlt():
         company = job.find("span", class_="company").text if job.find(
             "span", class_="company") is not None else None
 
+        company_img = websiteName + job.find("div", class_="img-wr").find(
+            "img")["src"] if job.find("div", class_="img-wr") is not None else None
+
         city = job.find("span", class_="company").find("span", class_=False).text if job.find(
             "span", class_="company") is not None else None
 
@@ -41,6 +44,7 @@ def scrape_jobs_cvlt():
             "link": link,
             "title": title,
             "company": company,
+            "company_img": company_img,
             "city": city,
             "time_added": time_added,
             "salary": salary

@@ -17,6 +17,8 @@ def scrape_jobs_cvBankas():
             class_="list_h3") is not None else None
         company = job.find("span", class_="dib").text if job.find(
             "span", class_="dib") is not None else None
+        company_img = job.find("div", class_="list_logo_c").find(
+            "img")["src"] if job.find("div", class_="list_logo_c") is not None else None
         city = job.find("span", class_="list_city").text if job.find(
             "span", class_="list_city") is not None else None
         time_added = job.find("span", class_="txt_list_2").text if job.find(
@@ -28,9 +30,10 @@ def scrape_jobs_cvBankas():
             "link": link,
             "title": title,
             "company": company,
+            "company_img": company_img,
             "city": city,
             "time_added": time_added,
-            "salary": salary
+            "salary": salary,
         }
 
         object_for_json.append(job_data)
