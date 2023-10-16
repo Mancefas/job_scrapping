@@ -32,8 +32,9 @@ def scrape_jobs_cvmarket():
             "span", class_=False) is not None else None
 
         salaryBlock = job.find("div", class_="salary-block")
-        salary = salaryBlock.find("span").text if job.find(
-            "span") is not None else None
+
+        salary = salaryBlock.find(
+            "span").text if salaryBlock is not None else None
 
         job_data = {
             "link": link,
