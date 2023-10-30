@@ -1,10 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
+from is_url_valid import is_url_valid
 
 
-def scrape_jobs_cvlt():
-    websiteName = "https://www.cv.lt"
-    URL = websiteName + "/it-telekomunikaciju-darbai"
+def scrape_jobs_cvlt(websiteName, deeperUrl="/it-telekomunikaciju-darbai"):
+    if not is_url_valid(websiteName + deeperUrl):
+        return {"error": "bad adrress"}
+
+    URL = websiteName + deeperUrl
     page = requests.get(URL)
 
     soup = BeautifulSoup(page.content, "html.parser")

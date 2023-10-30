@@ -1,10 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
+from is_url_valid import is_url_valid
 
 
-def scrape_jobs_cvBankas():
-    URL = "https://www.cvbankas.lt/?padalinys%5B%5D=76&keyw="
-    page = requests.get(URL)
+def scrape_jobs_cvBankas(url: str):
+    if not is_url_valid(url):
+        return {"error": "bad adrress"}
+
+    page = requests.get(url)
 
     soup = BeautifulSoup(page.content, "html.parser")
     jobs = soup.findAll(class_="list_a")
