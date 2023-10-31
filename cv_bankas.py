@@ -1,4 +1,5 @@
 import requests
+import json
 from bs4 import BeautifulSoup
 from is_url_valid import is_url_valid
 
@@ -41,4 +42,4 @@ def scrape_jobs_cvBankas(url: str):
 
         object_for_json.append(job_data)
 
-    return object_for_json
+    return json.dumps(object_for_json)

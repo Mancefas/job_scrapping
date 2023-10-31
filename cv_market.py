@@ -1,4 +1,5 @@
 import requests
+import json
 from bs4 import BeautifulSoup
 from is_url_valid import is_url_valid
 
@@ -51,4 +52,4 @@ def scrape_jobs_cvmarket(websiteName, deeperUrl="/darbo-skelbimai?op=search&sear
 
         job_data_list.append(job_data)
 
-    return job_data_list
+    return json.dumps(job_data_list)

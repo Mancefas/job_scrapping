@@ -1,4 +1,5 @@
 import requests
+import json
 from bs4 import BeautifulSoup
 from is_url_valid import is_url_valid
 
@@ -51,4 +52,4 @@ def scrape_jobs_cvonline(websiteName, deeperUrl="/lt/search?limit=20&offset=0&ca
 
         job_data_list.append(job_data)
 
-    return job_data_list
+    return json.dumps(job_data_list)
