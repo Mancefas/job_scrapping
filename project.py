@@ -6,6 +6,7 @@ from cv_lt import scrape_jobs_cvlt
 from cv_market import scrape_jobs_cvmarket
 from cv_online import scrape_jobs_cvonline
 from cv_bankas_single_job import scrape_job_in_cvbankas
+from ask_AI import ask_ai
 
 app = Flask(__name__)
 CORS(app)
@@ -25,9 +26,9 @@ def cv_bankas():
     return scrape_jobs_cvBankas(CV_BANKAS_URL)
 
 
-@app.route("/t/<path:url>")
+@app.route("/cvbankas/<path:url>")
 def one_job(url):
-    return jsonify(scrape_job_in_cvbankas(url))
+    return ask_ai(scrape_job_in_cvbankas(url))
 
 
 @app.route("/cvlt")

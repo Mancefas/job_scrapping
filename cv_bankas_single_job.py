@@ -21,6 +21,4 @@ def scrape_job_in_cvbankas(add_address):
         else:
             job_desc_string = job_desc_string + cleaned_text
 
-    print(job_desc_string)
-
     return job_desc_string
