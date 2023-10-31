@@ -20,5 +20,4 @@ def ask_ai(text):
             {"role": "user", "content": text}
         ]
     )
-
-    return completion.choices[0].message["content"]
+    return json.dumps(completion.choices[0].message["content"])

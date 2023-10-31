@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
 from commons import CV_BANKAS_URL, CV_LT_URL_START, CV_LT_URL_DEEPER, CV_MARKET_URL_START, CV_MARKET_URL_DEEPER, CV_ONLINE_URL_START, CV_ONLINE_URL_DEEPER
 from cv_bankas import scrape_jobs_cvBankas
@@ -13,7 +13,7 @@ CORS(app)
 
 
 def main():
-    app.run(app.run(host='0.0.0.0', debug=True))
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
 
 @app.route("/")
