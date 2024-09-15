@@ -29,16 +29,15 @@ def scrape_jobs_cvmarket(websiteName, deeperUrl="/darbo-skelbimai?op=search&sear
         company_img = job.find("img")["src"] if job.find(
             "img") is not None else None
 
-        city = job.find("span", class_="location").find("div").text if job.find(
+        city = job.find("span", class_="location").text if job.find(
             "span", class_="location") is not None else None
 
         time_added = job.find("span", class_=False).text if job.find(
             "span", class_=False) is not None else None
 
-        salaryBlock = job.find("div", class_="salary-block")
-
-        salary = salaryBlock.find(
-            "span").text if salaryBlock is not None else None
+        salary = job.find(
+            "div", class_="salary-block").text if job.find(
+            "div", class_="salary-block") is not None else None
 
         job_data = {
             "link": link,
