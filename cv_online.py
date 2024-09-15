@@ -17,7 +17,7 @@ def scrape_jobs_cvonline(websiteName, deeperUrl="/lt/search?limit=20&offset=0&ca
     job_data_list = []
 
     for job in jobs:
-        linkElement = job.find("a", class_="vacancy-item")
+        linkElement = job.find("a", class_="vacancy-item__title")
         link = websiteName + \
             linkElement.get("href") if linkElement.get(
                 "href") is not None else None
