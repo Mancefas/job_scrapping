@@ -8,6 +8,7 @@ from cv_online import scrape_jobs_cvonline
 from cv_bankas_single_job import scrape_job_in_cvbankas
 from cv_lt_single_job import scrape_job_in_cvlt
 from cv_market_single_job import scrape_job_in_cvmarket
+from cv_online_single_job import scrape_job_in_cvonline
 from ask_AI import ask_ai
 from ask_gemini import ask_gemini
 
@@ -57,6 +58,11 @@ def one_cvmarket_job(url):
 @app.route("/cvonline")
 def cv_online():
     return scrape_jobs_cvonline(CV_ONLINE_URL_START, CV_ONLINE_URL_DEEPER)
+
+
+@app.route("/cvonline/<path:url>")
+def one_cvonline_job(url):
+    return scrape_job_in_cvonline(url)
 
 
 if __name__ == "__main__":

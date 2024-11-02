@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import json
 
 
 def scrape_job_in_cvbankas(add_address):
