@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 
 
-def scrape_job_in_cvbankas(add_address):
+def scrape_single_job(add_address, textClass):
     page = requests.get(add_address)
     soup = BeautifulSoup(page.content, "html.parser")
 
@@ -11,7 +11,7 @@ def scrape_job_in_cvbankas(add_address):
     skip_with_words = ["€/mėn", "€/mon."]
 
     job_full_descriptions = soup.select("[itemprop='description']")[
-        0].findAll("div", class_="jobad_txt")
+        0].findAll("div", class_=textClass)
 
     for requermnt in job_full_descriptions:
         # clean text by removing whitespace, deleting new row(\n) and return(\r)
@@ -22,3 +22,7 @@ def scrape_job_in_cvbankas(add_address):
             job_desc_string = job_desc_string + cleaned_text
 
     return job_desc_string
+
+
+def scrape_job_in_cvbankas(address):
+    return scrape_single_job(address, "jobad_txt")
