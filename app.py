@@ -5,7 +5,7 @@ from cv_bankas import scrape_jobs_cvBankas
 from cv_lt import scrape_jobs_cvlt
 from cv_market import scrape_jobs_cvmarket
 from cv_online import scrape_jobs_cvonline
-from single_job_add import scrape_job_in_cvbankas
+from cv_bankas_single_job import scrape_job_in_cvbankas
 from ask_AI import ask_ai
 from ask_gemini import ask_gemini
 
