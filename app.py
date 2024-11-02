@@ -6,6 +6,7 @@ from cv_lt import scrape_jobs_cvlt
 from cv_market import scrape_jobs_cvmarket
 from cv_online import scrape_jobs_cvonline
 from cv_bankas_single_job import scrape_job_in_cvbankas
+from cv_lt_single_job import scrape_job_in_cvlt
 from ask_AI import ask_ai
 from ask_gemini import ask_gemini
 
@@ -35,6 +36,11 @@ def one_cvbankas_job(url):
 @app.route("/cvlt")
 def cv_lt():
     return scrape_jobs_cvlt(CV_LT_URL_START, CV_LT_URL_DEEPER)
+
+
+@app.route("/cvlt/<path:url>")
+def one_cvlt_job(url):
+    return ask_gemini(scrape_job_in_cvlt(url))
 
 
 @app.route("/cvmarket")
