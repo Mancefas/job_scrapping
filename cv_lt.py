@@ -12,7 +12,7 @@ def scrape_jobs_cvlt(websiteName, deeperUrl="/it-telekomunikaciju-darbai"):
     page = requests.get(URL)
 
     soup = BeautifulSoup(page.content, "html.parser")
-    jobs = soup.findAll("div", {"data-ng-if": "bulletins.first"})
+    jobs = soup.findAll("article", {"data-component": "jobad"})
 
     job_data_list = []
 
@@ -22,27 +22,28 @@ def scrape_jobs_cvlt(websiteName, deeperUrl="/it-telekomunikaciju-darbai"):
         if hasForm:
             break
 
-        linkComponent = job.find(class_="job-wr")
+        linkComponent = job.find(class_="block nohover")
         link = websiteName + \
             linkComponent.get("href") if linkComponent is not None else None
 
-        title = job.find(class_="title").text if job.find(
-            class_="title") is not None else None
+        title = job.find("h2").text if job.find(
+            "h2") is not None else None
 
-        company = job.find("span", class_="company").text if job.find(
-            "span", class_="company") is not None else None
+        company = job.find("div", class_="job-company").text if job.find(
+            "div", class_="job-company") is not None else None
 
-        company_img = websiteName + job.find("div", class_="img-wr").find(
-            "img")["src"] if job.find("div", class_="img-wr") is not None else None
+        company_img = job.find("div", class_="logo-block").find(
+            "img")["src"] if job.find("div", class_="logo-block") is not None else None
 
-        city = job.find("span", class_="company").find("span", class_=False).text if job.find(
-            "span", class_="company") is not None else None
+        city = job.find("span", class_="job-location").text if job.find(
+            "span", class_="job-location") is not None else None
 
-        time_added = job.find("div", class_="options-wr").text if job.find(
-            "div", class_="options-wr") is not None else None
+        time_added = job.find("div", class_="text-sm lg:text-base text-stone-600 whitespace-nowrap").text if job.find(
+            "div", class_="text-sm lg:text-base text-stone-600 whitespace-nowrap") is not None else None
 
-        salary = job.find("span", class_="salary").text if job.find(
-            "span", class_="salary") is not None else None
+        salaryHolder = job.find("span", {"data-component": "badge"})
+
+        salary = salaryHolder.find("div").text if salaryHolder is not None else None
 
         job_data = {
             "link": link,
