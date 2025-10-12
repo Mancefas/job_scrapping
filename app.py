@@ -11,6 +11,7 @@ from cv_market_single_job import scrape_job_in_cvmarket
 from cv_online_single_job import scrape_job_in_cvonline
 from ask_AI import ask_ai
 from ask_gemini import ask_gemini
+from gemini_recruiter import ask_gemini_recruiter
 
 app = Flask(__name__)
 CORS(app)
@@ -34,6 +35,9 @@ def cv_bankas():
 def one_cvbankas_job(url):
     return ask_gemini(scrape_job_in_cvbankas(url))
 
+@app.route("/recruiter/cvbankas/<path:url>")
+def recruiter_cvbankas_job(url):
+    return ask_gemini_recruiter(scrape_job_in_cvbankas(url))
 
 @app.route("/cvlt")
 def cv_lt():
