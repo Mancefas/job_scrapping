@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from is_url_valid import is_url_valid
 
 
-def scrape_jobs_cvlt(websiteName, deeperUrl="/it-telekomunikaciju-darbai"):
+def scrape_jobs_cvlt(websiteName, deeperUrl="/jobs?search%5Bcategories%5D%5B%5D=8"):
     if not is_url_valid(websiteName + deeperUrl):
         return {"error": "bad adrress"}
 
