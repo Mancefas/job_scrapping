@@ -7,8 +7,17 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
-prompt = "Find what is needed in this job add at {url} - write what web projects are mentioned, give years of experience if there is any mentioned of that, then coding languages in 20 words or less. Text can be either in English or Lithuanian languages, so respond with the same language. Write this as a simple text not a markdown."
-
+prompt = """
+Find what is needed in this job - write what web projects are mentioned, 
+give years of experience if there is any mentioned of that, then coding languages in 20 words or less. Text can be either in English or Lithuanian languages, so respond with the same language. 
+Write this as a simple text not a markdown.
+And use this format for answering:
+{
+    "projects": (list of projects mentioned),
+    "years_of_experience": (years of experience mentioned or "not specified"),
+    "coding_languages": (list of coding languages mentioned)
+}
+"""
 
 def ask_gemini(text):
 
